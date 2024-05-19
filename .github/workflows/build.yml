@@ -12,6 +12,8 @@ jobs:
        run: apt-get update && apt-get install -y && apt install ffmpeg -y && apt install imagemagick -y
      - name: install module
        run: npm install
+     - name: unzip
+       run: unzip session.zip
      - name: start
        run: node juna.js
    
