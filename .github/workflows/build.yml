@@ -1,13 +1,17 @@
+name: Build node js
 on: push
 jobs:
- first-jobs:
-    runs-on: ubuntu-latest
-    container: node:18
-    steps:
+  build-node:
+   runs-on: ubuntu-latest
+   container: node:18
+   steps:
      - run: node --version
-     - run: npm version
+     - run: npm --version
      - uses: actions/checkout@v3
-     - run: npm install
-     - run: npm install ffmpeg
-     - run: unzip session.zip
-     - run: node juna.js
+     - name: install apt
+       run: apt-get update && apt-get install -y && apt install ffmpeg -y && apt install imagemagick -y
+     - name: install module
+       run: npm install
+     - name: start
+       run: node juna.js
+   
